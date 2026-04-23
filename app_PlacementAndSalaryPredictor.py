@@ -4,8 +4,8 @@ import pandas as pd
 import plotly.graph_objects as go
 
 # ================== LOAD MODEL ==================
-classifier = joblib.load('artifacts/classifier.pkl')
-regressor = joblib.load('artifacts/regressor.pkl')
+classifier = joblib.load('classifier.pkl')
+regressor = joblib.load('regressor.pkl')
 
 # ================== PAGE CONFIG ==================
 st.set_page_config(
