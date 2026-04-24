@@ -4,8 +4,8 @@ import pandas as pd
 import plotly.graph_objects as go
 
 # ================== LOAD MODEL ==================
-classifier = joblib.load('classifier.pkl')
-regressor = joblib.load('regressor.pkl')
+classifier = joblib.load('artifacts/classifier.pkl')
+regressor = joblib.load('artifacts/regressor.pkl')
 
 # ================== PAGE CONFIG ==================
 st.set_page_config(
@@ -141,7 +141,6 @@ if st.button("🚀 Predict Now", use_container_width=True):
 
     df = pd.DataFrame([data])
 
-    # align with training
     df = df.reindex(columns=classifier.feature_names_in_, fill_value=0)
 
     # ================== PREDICTION ==================
@@ -171,6 +170,14 @@ if st.button("🚀 Predict Now", use_container_width=True):
             }
         ))
         fig.update_layout(height=400)
+
         st.plotly_chart(fig, use_container_width=True)
+        
+        st.markdown("""
+        ### 📊 Salary Interpretation
+        - 🔴 **0-7 LPA (Low Range)**: Gaji tergolong rendah, biasanya untuk entry-level atau skill masih basic  
+        - 🟡 **7-14 LPA (Medium Range)**: Gaji menengah, umumnya untuk mid-level dengan pengalaman beberapa tahun  
+        - 🟢 **14-20 LPA (High Range)**: Gaji tinggi, biasanya untuk senior role atau skill sangat kuat  
+        """)
     else:
         st.warning("No salary prediction because student is Not Placed.")
