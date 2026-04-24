@@ -180,7 +180,6 @@ if st.button("🚀 Predict Now", use_container_width=True):
         else:
             feedback = "🟢 High Range: Gaji tinggi, menunjukkan skill sangat kuat atau kandidat unggul."
 
-        st.markdown("### 📊 Salary Interpretation")
         st.info(feedback)
     else:
         st.warning("No salary prediction because student is Not Placed.")
