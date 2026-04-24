@@ -172,12 +172,15 @@ if st.button("🚀 Predict Now", use_container_width=True):
         fig.update_layout(height=400)
 
         st.plotly_chart(fig, use_container_width=True)
-        
-        st.markdown("""
-        ### 📊 Salary Interpretation
-        - 🔴 **0-7 LPA (Low Range)**: Gaji tergolong rendah, biasanya untuk entry-level atau skill masih basic  
-        - 🟡 **7-14 LPA (Medium Range)**: Gaji menengah, umumnya untuk mid-level dengan pengalaman beberapa tahun  
-        - 🟢 **14-20 LPA (High Range)**: Gaji tinggi, biasanya untuk senior role atau skill sangat kuat  
-        """)
+
+        if salary_pred < 7:
+            feedback = "🔴 Low Range: Gaji tergolong rendah, biasanya entry-level atau skill masih basic."
+        elif salary_pred < 14:
+            feedback = "🟡 Medium Range: Gaji menengah, biasanya sudah punya pengalaman atau skill cukup."
+        else:
+            feedback = "🟢 High Range: Gaji tinggi, menunjukkan skill sangat kuat atau kandidat unggul."
+
+        st.markdown("### 📊 Salary Interpretation")
+        st.info(feedback)
     else:
         st.warning("No salary prediction because student is Not Placed.")
