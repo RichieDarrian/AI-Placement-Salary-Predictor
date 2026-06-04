@@ -1,7 +1,6 @@
-streamlit
-joblib
+numpy
 pandas
-plotly
 scikit-learn==1.8.0
-numpy==2.4.4
-xgboost
+joblib
+streamlit
+plotly
